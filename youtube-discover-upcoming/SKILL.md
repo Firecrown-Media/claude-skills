@@ -9,6 +9,25 @@ disable-model-invocation: true
 
 Find emerging/upcoming YouTube channels for partnerships in: **$ARGUMENTS**
 
+## YouTube API Configuration
+
+**API Key:** `AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls`
+
+Use this API key with the YouTube Data API v3 for accurate data:
+
+```bash
+# Search for channels by keyword
+curl "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$ARGUMENTS&type=channel&maxResults=25&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+
+# Get channel statistics (filter by subscriber count for emerging channels)
+curl "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails,brandingSettings&id=CHANNEL_IDS&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+
+# Get videos to check engagement rates
+curl "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=VIDEO_IDS&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+```
+
+**Note:** The `brandingSettings` part includes the channel's business email if they've made it public.
+
 ## Instructions
 
 ### Phase 1: Find Emerging Channels
@@ -29,6 +48,12 @@ Focus on **rising creators** (not mega-channels) who are more likely to respond 
    - Mid-tier: 100K - 500K subscribers
 
    These creators are often more responsive and offer better ROI than mega-influencers.
+
+3. **Use the YouTube API to verify and filter**:
+   - Get channel IDs from search results
+   - Fetch statistics to confirm subscriber counts are in target range
+   - Filter OUT channels with 500K+ subscribers
+   - Get brandingSettings to find business emails
 
 ### Phase 2: Evaluate Each Channel
 

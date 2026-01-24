@@ -9,14 +9,43 @@ disable-model-invocation: true
 
 Research the YouTube channel: **$ARGUMENTS**
 
+## YouTube API Configuration
+
+**API Key:** `AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls`
+
+Use this API key with the YouTube Data API v3 for accurate data. Example API calls:
+
+```bash
+# Search for channel by name
+curl "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$ARGUMENTS&type=channel&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+
+# Get channel details (replace CHANNEL_ID)
+curl "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&id=CHANNEL_ID&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+
+# Get channel's uploads playlist videos (replace PLAYLIST_ID)
+curl "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=PLAYLIST_ID&maxResults=50&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+
+# Get video statistics (replace VIDEO_IDS with comma-separated IDs)
+curl "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=VIDEO_IDS&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+```
+
 ## Instructions
 
-1. **Search for channel information** using web search:
-   - Search for "$ARGUMENTS YouTube channel"
-   - Search for "$ARGUMENTS YouTube top videos"
-   - Search for "$ARGUMENTS YouTube channel analytics" or "socialblade $ARGUMENTS"
+1. **Find the channel using the API**:
+   - Use the search endpoint to find the channel ID for "$ARGUMENTS"
+   - Get full channel details using the channels endpoint
+   - Get the uploads playlist ID from contentDetails.relatedPlaylists.uploads
 
-2. **Gather the following data**:
+2. **Fetch video data**:
+   - Get videos from the uploads playlist (up to 50)
+   - Get detailed stats for each video using the videos endpoint
+   - Sort by view count to find top performers
+
+3. **Supplement with web search** (for additional context):
+   - Search for "$ARGUMENTS YouTube channel analytics" or "socialblade $ARGUMENTS"
+   - Look for any news/articles about the channel
+
+4. **Gather the following data**:
    - Channel name and URL
    - Subscriber count (approximate)
    - Total video count
