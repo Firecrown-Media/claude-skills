@@ -27,6 +27,9 @@ curl "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDe
 
 # Get video statistics
 curl "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=VIDEO_IDS&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+
+# Search for top videos in the niche (by view count)
+curl "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$ARGUMENTS&type=video&order=viewCount&maxResults=25&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
 ```
 
 ## Instructions
@@ -56,7 +59,39 @@ For each discovered channel, gather:
 - What makes them stand out
 - Upload frequency
 
-### Phase 3: Comparative Analysis
+### Phase 3: Top 25 Video Analysis
+
+**IMPORTANT:** This phase analyzes the top-performing videos across the entire niche.
+
+1. **Search for top videos** using the YouTube API:
+   ```bash
+   # Search with multiple relevant keyword variations
+   curl "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$ARGUMENTS&type=video&order=viewCount&maxResults=25&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+   ```
+
+2. **Get detailed video statistics** for the video IDs returned:
+   ```bash
+   curl "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=VIDEO_ID1,VIDEO_ID2,...&key=AIzaSyCkpwkCPkEPh-gtLhLUZWNepUWc_uBFDls"
+   ```
+
+3. **For each video, analyze and categorize:**
+   - Video title and URL
+   - View count, likes, comments
+   - Channel name
+   - Publish date
+   - Video duration
+   - **Topic Category** (assign one of: Tutorial/How-To, Entertainment, Review, Documentary, Vlog, News/Update, Challenge, Compilation, Interview, Other)
+   - **Content Theme** (specific subject matter within the niche)
+   - **Title Style** (clickbait, educational, emotional, question-based, list-based, etc.)
+
+4. **Aggregate analysis:**
+   - Count videos per category
+   - Identify top-performing topics/themes
+   - Analyze title patterns that drive views
+   - Note video length trends for top performers
+   - Calculate average engagement (likes/views ratio)
+
+### Phase 4: Comparative Analysis
 
 Analyze patterns across all channels:
 - Common content themes that perform well
@@ -65,7 +100,7 @@ Analyze patterns across all channels:
 - Audience size distribution (mega vs mid-tier creators)
 - Content formats (tutorials, vlogs, reviews, etc.)
 
-### Phase 4: Output
+### Phase 5: Output
 
 Save the research to: `Youtube Research/$ARGUMENTS-niche-research.md`
 
@@ -97,6 +132,87 @@ Save the research to: `Youtube Research/$ARGUMENTS-niche-research.md`
 | Channel | Subscribers | Avg Views | Focus |
 |---------|-------------|-----------|-------|
 | ...     | ...         | ...       | ...   |
+
+---
+
+## Top 25 Videos Analysis
+
+### Video Rankings
+
+| Rank | Title | Channel | Views | Likes | Category | Theme |
+|------|-------|---------|-------|-------|----------|-------|
+| 1 | [Title] | [Channel] | X | X | [Category] | [Theme] |
+| 2 | [Title] | [Channel] | X | X | [Category] | [Theme] |
+| ... | ... | ... | ... | ... | ... | ... |
+| 25 | [Title] | [Channel] | X | X | [Category] | [Theme] |
+
+### Category Breakdown
+
+| Category | # of Videos | % of Top 25 | Avg Views | Top Performer |
+|----------|-------------|-------------|-----------|---------------|
+| Tutorial/How-To | X | X% | X | "[Title]" |
+| Entertainment | X | X% | X | "[Title]" |
+| Review | X | X% | X | "[Title]" |
+| Documentary | X | X% | X | "[Title]" |
+| Vlog | X | X% | X | "[Title]" |
+| News/Update | X | X% | X | "[Title]" |
+| Challenge | X | X% | X | "[Title]" |
+| Compilation | X | X% | X | "[Title]" |
+| Interview | X | X% | X | "[Title]" |
+
+### Topic/Theme Analysis
+
+**Most Common Themes in Top 25:**
+1. [Theme 1] - X videos (X% of top 25)
+2. [Theme 2] - X videos (X% of top 25)
+3. [Theme 3] - X videos (X% of top 25)
+4. [Theme 4] - X videos (X% of top 25)
+5. [Theme 5] - X videos (X% of top 25)
+
+**Emerging/Underrepresented Themes:**
+- [Theme A] - Only X video(s), but high engagement
+- [Theme B] - Gap opportunity
+
+### Title Pattern Analysis
+
+**Successful Title Formulas:**
+1. **[Pattern Name]** - X videos use this
+   - Examples: "[Title 1]", "[Title 2]"
+   - Why it works: [explanation]
+
+2. **[Pattern Name]** - X videos use this
+   - Examples: "[Title 1]", "[Title 2]"
+   - Why it works: [explanation]
+
+3. **[Pattern Name]** - X videos use this
+   - Examples: "[Title 1]", "[Title 2]"
+   - Why it works: [explanation]
+
+**Common Title Elements:**
+- Numbers/Lists: X videos (X%)
+- Questions: X videos (X%)
+- Emotional words: X videos (X%)
+- How-to/Tutorial language: X videos (X%)
+- Caps/emphasis: X videos (X%)
+
+### Video Length Analysis
+
+| Duration Range | # of Videos | Avg Views | Best Performer |
+|----------------|-------------|-----------|----------------|
+| Under 5 min | X | X | "[Title]" |
+| 5-10 min | X | X | "[Title]" |
+| 10-20 min | X | X | "[Title]" |
+| 20-30 min | X | X | "[Title]" |
+| 30+ min | X | X | "[Title]" |
+
+### Engagement Metrics
+
+- **Average likes/views ratio:** X%
+- **Average comments/views ratio:** X%
+- **Highest engagement video:** "[Title]" (X% engagement)
+- **Most commented video:** "[Title]" (X comments)
+
+---
 
 ## Content Patterns
 
